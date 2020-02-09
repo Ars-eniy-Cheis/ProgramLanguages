@@ -15,8 +15,8 @@ int num_neg(float a[], int n);
 void change_place(float a[], int n);
 float min(float a[], int n);
 int num_min(float a[], int n);
-void D2_input(int a[], int b[], int n, int m);
-void D2_output(int a[], int b[], int n, int m);
+void D2_input(int** a, int n, int m);
+void D2_output(int** a, int n, int m);
 
 int main()
 {
@@ -65,26 +65,9 @@ int main()
 	{
 		A[i] = new int[m];
 	}
-
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			A[i][j] = rand() % 100;
-		}
-	}//Ввод массива
-	
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			printf("%5d",A[i][j]);
-		}
-		printf("\n");
-	}//Вывод массива
-
+	D2_input(A, n, m);
+	D2_output(A, n, m);
 	int str = 0, charct = 0, i_charct = 0;
-
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
@@ -253,12 +236,25 @@ int num_min(float a[], int n)
 	return n_min;
 }//Номер min эл-та массива
 
-void D2_input(int a[], int b[], int n, int m)
+void D2_input(int** a, int n, int m)
 {
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			a[i][j] = rand() % 100;
+		}
+	}
+}//Случайный ввод двумерного массива
 
-}//
-
-void D2_output(int a[], int b[], int n, int m)
+void D2_output(int** a, int n, int m)
 {
-
-}//
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			printf("%5d", a[i][j]);
+		}
+		cout << endl;
+	}
+}//Вывод двумерного массива
