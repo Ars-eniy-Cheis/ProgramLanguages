@@ -1,0 +1,5 @@
+﻿  ArraysEx2.cpp
+D:\Languages\ProgramLanguages\ArraysEx2\ArraysEx2.cpp(48,21): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\Languages\ProgramLanguages\ArraysEx2\ArraysEx2.cpp(108,17): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+D:\Languages\ProgramLanguages\ArraysEx2\ArraysEx2.cpp(275): warning C4715: sum_pos_befor_neg: значение возвращается не при всех путях выполнения
+  ArraysEx2.vcxproj -> D:\Languages\ProgramLanguages\ArraysEx2\Debug\ArraysEx2.exe

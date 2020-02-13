@@ -1,0 +1,318 @@
+﻿
+#include <iostream>
+#include <math.h>
+#include <cmath>
+
+using namespace std;
+
+void input(float a[], int n);
+void output(float a[], int n);
+float midle_size(float a[], int n);
+float max(float a[], int n);
+int num_max(float a[], int n);
+float min(float a[], int n);
+int num_min(float a[], int n);
+void D2_input(int** a, int n, int m);
+void D2_output(int** a, int n, int m);
+int num_neg(float a[], int n);
+float sum_pos_befor_neg (float a[], int n);
+bool is_pos(float a[], int n);
+bool is_neg(float a[], int n);
+float min_pos(float a[], int n);
+
+int main()
+{
+    //Variant 2
+    cout << "Variant 2, Number 1 " << endl << "Enter quantity of elements of array" << endl;
+    int n; float midsz;
+    cin >> n;
+    float* a = new float[n];
+	cout << "enter elements of array" << endl;
+	input(a, n);
+	//A
+	cout << "A:" << endl;
+	midsz = midle_size(a, n);
+	cout << "middle size of array is: " << midsz << endl;
+	float cls_mdsz = fabs(a[0] - midsz), num_cls_mid_sz;
+	for (int i = 0; i < n; i++)
+	{
+		if (fabs(a[i] - midsz) == 0)
+		{
+			num_cls_mid_sz = -1;
+			cout << "Ellement with number "<< i << " is equal to middle size" << endl;
+			break;
+		}
+		if (fabs(a[i] - midsz) <= cls_mdsz)
+		{
+			cls_mdsz = fabs(a[i] - midsz);
+			num_cls_mid_sz = i;
+		}
+	}
+	if (num_cls_mid_sz > -1)
+	{
+		cout << "The closest ellement to middle size is ellement with number: " << num_cls_mid_sz << endl;
+	}
+	//B
+	cout << "B: " << endl;
+	if (min_pos(a, n) == -1)
+	{
+		cout << "There isn't any positive ellements" << endl;
+	}
+	else
+	{
+		cout << "The smalles positive ellement is " << min_pos(a, n) << endl;
+	}
+	//C
+	cout << "C: " << endl;
+	if (sum_pos_befor_neg(a, n) == -1)
+	{
+		cout << "There isn't any positive ellement " << endl;
+	}
+	else if (sum_pos_befor_neg(a, n) == -2)
+	{
+		cout << "There isn't any negative ellement " << endl;
+	}
+	else
+	{
+		cout << "Sum of positive ellements before first negative is: " << sum_pos_befor_neg(a, n) << endl;
+	}
+
+	//Number 2
+	cout << "Number 2" << endl;
+	int m;
+	cout << "enter quantity of columns ";
+	cin >> n;
+	cout << "enter quantity of strings ";
+	cin >> m;
+	int** A = new int* [n];
+	for (int i = 0; i < n; i++)
+	{
+		A[i] = new int[m];
+	}
+	D2_input(A, n, m);
+	D2_output(A, n, m);
+	float col = 0, charct = 0, i_charct = 0;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			if (A[j][i] < 0 && (abs(A[j][i]) % 2 == 1))
+			{
+				col = col + abs((A[j][i]));
+			}
+
+		}
+		if (col > charct)
+		{
+			charct = col;
+			i_charct = i + 1;
+		}
+		col = 0;
+	}
+	if (charct == 0)
+	{
+		cout << endl << "There isn't any negative and uneven ellement";
+	}
+	else
+	{
+		cout << "Max character: " << charct << endl << "In a column: " << i_charct;
+	}
+}
+
+void input(float a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cin >> a[i];
+	}
+}//Ввод с клавиатуры
+
+
+void output(float a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		cout << a[i] << " ";
+	}
+}//Вывод массива
+
+float midle_size(float a[], int n)
+{
+	float mid_sz = 0;
+	for (int i=0; i < n; i++)
+	{
+		mid_sz += a[i];
+	}
+	mid_sz = mid_sz / n;
+	return mid_sz;
+}//Среднее зн6ачение эл-тов массива
+
+float max(float a[], int n)
+{
+	float max = a[0], n_max = 0;
+	for (int i = 1; i < n; i++)
+	{
+		if (a[i] > max)
+		{
+			max = a[i];
+		}
+	}
+	return max;
+}// Max эл-т
+
+int num_max(float a[], int n)
+{
+	int n_max = 0;
+	float max = a[0];
+	for (int i = 1; i < n; i++)
+	{
+		if (a[i] > max)
+		{
+			n_max = i;
+			max = a[i];
+		}
+	}
+	return n_max;
+}// Max эл-т номер
+
+float min(float a[], int n)
+{
+	float min = a[0], n_min = 0;
+	for (int i = 1; i < n; i++)
+	{
+		if (a[i] < min)
+		{
+			min = a[i];
+		}
+	}
+	return min;
+}//Мин эл-т массива
+
+int num_min(float a[], int n)
+{
+	int n_min = 0;
+	float min = a[0];
+	for (int i = 1; i < n; i++)
+	{
+		if (a[i] < min)
+		{
+			n_min = i;
+			min = a[i];
+		}
+	}
+	return n_min;
+}//Номер min эл-та массива
+
+void D2_input(int** a, int n, int m)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			a[i][j] = rand() % 100-150;
+		}
+	}
+}//Случайный ввод двумерного массива
+
+void D2_output(int** a, int n, int m)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			printf("%5d", a[i][j]);
+		}
+		cout << endl;
+	}
+}//Вывод двумерного массива
+
+int num_neg(float a[], int n)
+{
+	int n_neg = -1;
+	float neg = 0;
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] < 0)
+		{
+			n_neg = i;
+			neg = a[i];
+			break;
+		}
+	}
+	if (n_neg == -1)
+	{
+		return -1;
+	}
+	else
+	{
+		return n_neg;
+	}
+}//номер первого отриц. эл-та
+
+float sum_pos_befor_neg(float a[], int n)
+{
+	if (is_neg(a, n) == 1)
+	{
+		return -2;
+	}
+	if (is_pos(a, n) == 1)
+	{
+		return -1;
+	}
+	else
+	{
+		float sum = 0;
+		for (int i = 0; i < n; i++)
+		{
+			if (a[i] < 0)
+			{
+				return sum;
+				break;
+			}
+			sum += a[i];
+		}
+	}
+}//сумма положительных элементов перед первым отрицательным
+
+bool is_pos(float a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] > 0)
+		{
+			return 0;
+			break;
+		}
+	}
+	return 1;
+}//проверка на наличие положительных эл-то в массиве
+
+bool is_neg(float a[], int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		if (a[i] < 0)
+		{
+			return 0;
+			break;
+		}
+	}
+	return 1;
+} // проверка на наличие отрицательных эл - то в массиве
+
+float min_pos(float a[], int n)
+{
+	float min = a[0];
+	if (is_pos(a, n) == 1)
+	{
+		return -1;
+	}
+	for (int i = 1; i < n; i++)
+	{
+		if (a[i] > 0 && a[i] < min)
+		{
+			min = a[i];
+		}
+	}
+	return min;
+}//Минимальный положительный эл-т
