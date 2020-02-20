@@ -9,6 +9,7 @@ using namespace std;
 
 void output(int a[], int n);
 int rand_in_bounds(int a, int b);
+void Bubble_sort(int a[], int n);
 
 int main()
 {
@@ -48,6 +49,7 @@ int main()
             j++;
         }
     }
+    Bubble_sort(a, n);
     output(a, n);
     delete[] a;
     //Number 2
@@ -66,7 +68,15 @@ int main()
         } while (B <= A);
         
     }
-    //rand_in_bounds(A, B)
+    cout << "enter quantity of elements of array" << endl;
+    cin >> n;
+    a = new int[n];
+    for (int i = 0; i<n; i++)
+    {
+        a[i] = rand_in_bounds(A, B);
+    }
+    output(a, n);
+
 
 }
 
@@ -83,3 +93,19 @@ int rand_in_bounds(int a, int b)
     int g = rand() % (b - a + 1) + a;
     return g;
 }//случайное число в заданном диапозоне
+
+void Bubble_sort(int a[], int n)
+{
+    for (int i = 0; i < n; i++) 
+    {
+        for (int j = 0; j < n-1; j++) 
+        {
+            if (a[j] > a[j + 1]) 
+            {
+                int b = a[j]; 
+                a[j] = a[j + 1];
+                a[j + 1] = b;
+            }
+        }
+    }
+}//Пузырьковая сортировка
