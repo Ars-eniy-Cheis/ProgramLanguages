@@ -29,6 +29,11 @@ int scan_for_positive(int** A, int n, int m);
 int scan_for_negative(int** A, int n, int m);
 void max_neg_inGreen(int** A, int n, int m, int& Remi, int& Remj);
 void min_pos_inRed(int** A, int n, int m, int& Remi, int& Remj);
+void trans_sqr(int** a, int n);
+void trans_any(int** a, int** b, int n, int m);
+void matrix_sum(int** a, int** b, int** c, int n, int m);
+void matrix_mult(int** a, int** b, int** c, int n, int m, int k);
+void mult_of_num_and_matrix(int** a, int n, int m, int alpha);
 
 int main()
 {
@@ -347,7 +352,163 @@ int main()
 		}
 		case 5:
 		{
-			cout << "Variant 4. Number 2" << endl;
+			cout << "Variant 4. Number 2" << endl<<"Do A x C(t) + 2 x B x D(t)";
+			int m = 4, n = 3;
+			int** A = new int* [m];
+			int** C = new int* [m];
+			int** CTrans = new int* [n];
+			int** AxC = new int* [m];
+			for (int i = 0; i < m; i++)
+			{
+				C[i] = new int[n];
+				A[i] = new int[n];
+			}
+			for (int i = 0; i < n; i++)
+			{
+				CTrans[i] = new int[m];
+			}
+			for (int i = 0; i < m; i++)
+			{
+				AxC[i] = new int[m];
+			}
+			int** B = new int* [m];
+			int** D = new int* [m];
+			int** DTrans = new int* [1];
+			int** BxD = new int* [m];
+			for (int i = 0; i < m; i++)
+			{
+				B[i] = new int[1];
+				D[i] = new int[1];
+			}
+			for (int i = 0; i < 1; i++)
+			{
+				DTrans[i] = new int[m];
+			}
+			for (int i = 0; i < m; i++)
+			{
+				BxD[i] = new int[m];
+			}
+			ifstream fMatA, fMatC, fVecB, fVecD;
+			fMatA.open("MatrixA.txt");
+			while (!fMatA.eof())
+			{
+				for (int i = 0; i < m; i++)
+				{
+					for (int j = 0; j < n; j++)
+					{
+						fMatA >> A[i][j];
+					}
+				}
+			}
+			fMatA.close();
+			cout << "Matrix A" << endl;
+			D2_output(A, m, n);
+			fMatC.open("MatrixC.txt");
+			while (!fMatC.eof())
+			{
+				for (int i = 0; i < m; i++)
+				{
+					for (int j = 0; j < n; j++)
+					{
+						fMatC >> C[i][j];
+					}
+				}
+			}
+			cout << "Matrix C" << endl;
+			fMatA.close();
+			D2_output(C, m, n);
+			trans_any(C, CTrans, m, n);
+			cout << "Transpotted C" << endl;
+			D2_output(CTrans, n, m);
+			for (int i = 0; i < m; i++)
+			{
+				delete C[i];
+			}
+			delete C;
+			cout << "Multiplication of A and C(t)" << endl;
+			matrix_mult(A, CTrans, AxC, m, n, m);
+			D2_output(AxC, m, m);
+			for (int i = 0; i < m; i++)
+			{
+				delete A[i];
+			}
+			delete A;
+			for (int i = 0; i < n; i++)
+			{
+				delete CTrans[i];
+			}
+			delete CTrans;
+			fVecB.open("VectorB.txt");
+			while (!fVecB.eof())
+			{
+				for (int i = 0; i < m; i++)
+				{
+					for (int j = 0; j < 1; j++)
+					{
+						fVecB >> B[i][j];
+					}
+				}
+			}
+			fVecB.close();
+			fVecD.open("VectorD.txt");
+			while (!fVecD.eof())
+			{
+				for (int i = 0; i < m; i++)
+				{
+					for (int j = 0; j < 1; j++)
+					{
+						fVecD >> D[i][j];
+					}
+				}
+			}
+			fVecD.close();
+			cout << "Vector B" << endl;
+			D2_output(B, m, 1);
+			cout << "Vector D" << endl;
+			D2_output(D, m, 1);
+			cout << "2*B" << endl;
+			mult_of_num_and_matrix(B, m, 1, 2);
+			D2_output(B, m, 1);
+			trans_any(D, DTrans, m, 1);
+			cout << "Transpotted D" << endl;
+			D2_output(DTrans, 1, m);
+			for (int i = 0; i < m; i++)
+			{
+				delete D[i];
+			}
+			delete D;
+			cout << "Multiplication of 2*B and D(t)" << endl;
+			matrix_mult(B, DTrans, BxD, m, 1, m);
+			D2_output(BxD, m, m);
+
+			for (int i = 0; i < m; i++)
+			{
+				delete B[i];
+			}
+			delete B;
+			for (int i = 0; i < 1; i++)
+			{
+				delete DTrans[i];
+			}
+			delete DTrans;
+			cout << "A x C(t) + 2 x B x D(t)" << endl;
+			int** ACplBD = new int* [m];
+			for (int i = 0; i < m; i++)
+			{
+				ACplBD[i] = new int[m];
+			}
+			matrix_sum(AxC, BxD, ACplBD, m, m);
+			D2_output(ACplBD, m, m);
+			for (int i = 0; i < m; i++)
+			{
+				delete AxC[i];
+				delete BxD[i];
+				delete ACplBD[i];
+			}
+			delete AxC;
+			delete BxD;
+			delete ACplBD;
+			cout << endl;
 			menu();
 			break;
 		}
@@ -361,7 +522,7 @@ int main()
 
 void menu()
 {
-	cout << "MENU" << endl << endl << "Choose number: " << endl << "1. Life Game " << endl << "2.Gaus method and SLAE " << endl << "3. Shooters" << endl << "4. " << endl << "5. " << endl << "0. Exit" << endl;
+	cout << "MENU" << endl << endl << "Choose number: " << endl << "1. Life Game " << endl << "2.Gaus method and SLAE " << endl << "3. Shooters" << endl << "4. Varint 4 #1" << endl << "5. Varint 4 #2" << endl << "0. Exit" << endl;
 }
 
 void D2_input(int** a, int n, int m)
@@ -664,3 +825,86 @@ void min_pos_inRed(int** A, int n, int m, int& Remi, int& Remj)
 		}
 	}
 }
+
+void trans_sqr(int** a, int n)
+{
+	/*На вход получаем двумерный массив a из целых чисел размером n на n.
+	Матрица транспонируется по следующей формуле: Меняем местами строки со столбцами
+	На выходе получаем транспонированную матрицу*/
+	int temp;
+	for (int i = 0; i < n - 1; i++)
+	{
+		for (int j = i + 1; j < n; j++)
+		{
+			temp = a[i][j];
+			a[i][j] = a[j][i];
+			a[j][i] = temp;
+		}
+	}
+
+}//Транспонирование квадратной матрицы
+
+void trans_any(int** a, int** b, int n, int m)
+{
+	/*На вход получаем два двумерных массивa a и b из целых чисел размером n на m и m на n соответственно.
+	Матрица транспонируется по следующей формуле: Меняем местами строки со столбцами
+	На выходе получаем новую транспонированную матрицу*/
+
+	for (int i = 0; i < m; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			b[i][j] = a[j][i];
+		}
+	}
+
+}//Транспонимрование любой матрицы
+
+void matrix_sum(int** a, int** b, int** c, int n, int m)
+{
+	/*
+	считаем по правилу: c[i][j] = a[i][j]+b[i][j]
+
+	*/
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			c[i][j] = a[i][j] + b[i][j];
+		}
+	}
+
+
+}//Сумма двух матриц
+
+void matrix_mult(int** a, int** b, int** c, int n, int m, int k)
+{
+	/*
+
+	считаем по правилу: c[i][j] = a[i][1]*b[1][j]+a[i][2]*b[2][j]+...+a[i][k]*b[k][j]
+
+	*/
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < k; j++)
+		{
+			c[i][j] = 0;
+			for (int l = 0; l < m; l++)
+			{
+				c[i][j] += a[i][l] * b[l][j];
+			}
+		}
+	}
+
+}//умножение матрицы на матрицу
+
+void mult_of_num_and_matrix(int** a, int n, int m, int alpha)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			a[i][j] = alpha * a[i][j];
+		}
+	}
+}//Умножение числа на матрицу
