@@ -34,6 +34,10 @@ void trans_any(int** a, int** b, int n, int m);
 void matrix_sum(int** a, int** b, int** c, int n, int m);
 void matrix_mult(int** a, int** b, int** c, int n, int m, int k);
 void mult_of_num_and_matrix(int** a, int n, int m, int alpha);
+void D2_output_Double(double** a, int n, int m);
+void output(double a[], int n);
+void Gaus_method(double** a, double* b, double* x, int n);
+void Gaus_method_output(double* x, double** a, int n);
 
 int main()
 {
@@ -168,10 +172,176 @@ int main()
 		}
 		case 2:
 		{
-			cout << "Gaus method and SLAE" << endl;
+			cout << "Gaus method and SLAE" << endl << "1. Handle input" << endl << "2. Ready input" << endl << "0. Exit" << endl;
+			int chos = 1;
+			while (chos != 0)
+			{
+				cin >> chos;
+				switch (chos)
+				{
+				case 1:
+				{
+					int n;
+					cout << "Handle input" << endl;
+					cout << "Order: " << endl;
+					cin >> n;
+					double** a = new double* [n];
+					for (int i = 0; i < n; i++)
+					{
+						a[i] = new double[n];
+					}
+					double* b = new double[n];
+					double* x = new double[n];
+					cout << "Enter coefficients and free term: " << endl;
+					for (int i = 0; i < n; i++)
+					{
+						for (int j = 0; j < n; j++)
+						{
+							cout << "a[" << i+1 << "," << j+1 << "]= ";
+							cin >> a[i][j];
+						}
+						cout << "b[" << i+1 << "]= ";
+						cin >> b[i];
+					}
+					D2_output_Double(a, n, n);
+					output(b, n); cout << endl;
+					Gaus_method(a, b, x, n);
+					cout << "1. Handle input" << endl << "2. Ready input" << endl << "0. Exit" << endl;
+					break;
+				}
+				case 2:
+				{
+					cout << "Ready input" << endl;
+					double* x_sol = new double[3];
+					ifstream UsualMAT, UsualMAT_B, NoSolMat, NoSolMat_B, GilMat, GilMat_B;
+					int MAT = 1;
+					while (MAT != 0)
+					{
+						cout << "Chose MAtrix: " << endl << "1. Usual Matrix" << endl << "2. No solution Matrix" << endl << "3. Gilbert MAtrix" << endl << "0. Exit" << endl;
+						cin >> MAT;
+						switch (MAT)
+						{
+						case 1:
+						{
+							double* Usual_B = new double[3];
+							double** Usual = new double* [3];
+							for (int i = 0; i < 3; i++)
+							{
+								Usual[i] = new double[3];
+							}
 
-			menu();
+							UsualMAT.open("UsualMAT.txt");
+							while (!UsualMAT.eof())
+							{
+								for (int i = 0; i < 3; i++)
+								{
+									for (int j = 0; j < 3; j++)
+									{
+										UsualMAT >> Usual[i][j];
+									}
+								}
+							}
+							UsualMAT.close();
+							UsualMAT_B.open("UsualMAT_Ans.txt");
+							while (!UsualMAT_B.eof())
+							{
+								for (int i = 0; i < 3; i++)
+								{
+									UsualMAT_B >> Usual_B[i];
+								}
+							}
+							UsualMAT_B.close();
+							D2_output_Double(Usual, 3, 3);
+							output(Usual_B, 3); cout << endl;
+							Gaus_method(Usual, Usual_B, x_sol, 3);
+							break;
+						}
+						case 2:
+						{
+							double* UnUsual_B = new double[3];
+							double** UnUsual = new double* [3];
+							for (int i = 0; i < 3; i++)
+							{
+								UnUsual[i] = new double[3];
+							}
+
+							NoSolMat.open("NOsol.txt");
+							while (!NoSolMat.eof())
+							{
+								for (int i = 0; i < 3; i++)
+								{
+									for (int j = 0; j < 3; j++)
+									{
+										NoSolMat >> UnUsual[i][j];
+									}
+								}
+							}
+							NoSolMat.close();
+							NoSolMat_B.open("NOsol_B.txt");
+							while (!NoSolMat_B.eof())
+							{
+								for (int i = 0; i < 3; i++)
+								{
+									NoSolMat_B >> UnUsual_B[i];
+								}
+							}
+							NoSolMat_B.close();
+							D2_output_Double(UnUsual, 3, 3);
+							output(UnUsual_B, 3); cout << endl;
+							Gaus_method(UnUsual, UnUsual_B, x_sol, 3);
+							break;
+						}
+						case 3:
+						{
+							double* Gilbert_B = new double[3];
+							double** Gilbert = new double* [3];
+							for (int i = 0; i < 3; i++)
+							{
+								Gilbert[i] = new double[3];
+							}
+							GilMat.open("Gilbert.txt");
+							while (!GilMat.eof())
+							{
+								for (int i = 0; i < 3; i++)
+								{
+									for (int j = 0; j < 3; j++)
+									{
+										GilMat >> Gilbert[i][j];
+									}
+								}
+							}
+							GilMat.close();
+							GilMat_B.open("Gibert_B.txt");
+							while (!GilMat_B.eof())
+							{
+								for (int i = 0; i < 3; i++)
+								{
+									GilMat_B >> Gilbert_B[i];
+								}
+							}
+							GilMat_B.close();
+							D2_output_Double(Gilbert, 3, 3);
+							output(Gilbert_B, 3); cout << endl;
+							Gaus_method(Gilbert, Gilbert_B, x_sol, 3);
+							break;
+						}
+						case 0:
+						{
+							cout<< "1. Handle input" << endl << "2. Ready input" << endl << "0. Exit" << endl;
+						}
+						}
+					}	
+					break;
+				}
+				case 0:
+				{
+					cout << endl;
+					menu();
+				}
+				}
+			}
 			break;
+			
 		}
 		case 3:
 		{
@@ -335,7 +505,7 @@ int main()
 			int RemiGr, RemjGr, RemiRed, RemjRed, temp;
 			max_neg_inGreen(A, n, m, RemiGr, RemjGr);
 			min_pos_inRed(A, n, m, RemiRed, RemjRed);
-			cout << RemiGr << " " << RemjGr << endl << RemiRed << " " << RemjRed << endl;
+			cout << "Coordinates of biggest negative ellemnt: " <<RemiGr << " " << RemjGr << endl<< "Coordinates of lowest positive ellemnt: " << RemiRed << " " << RemjRed << endl;
 			temp = A[RemiGr][RemjGr];
 			A[RemiGr][RemjGr] = A[RemiRed][RemjRed];
 			A[RemiRed][RemjRed] = temp;
@@ -522,12 +692,17 @@ int main()
 
 void menu()
 {
+	/*
+	Ф-ция для вывода меню, чтобы не занимать лишнее место в программе. Выводит пункты меню.
+	*/
 	cout << "MENU" << endl << endl << "Choose number: " << endl << "1. Life Game " << endl << "2.Gaus method and SLAE " << endl << "3. Shooters" << endl << "4. Varint 4 #1" << endl << "5. Varint 4 #2" << endl << "0. Exit" << endl;
 }
 
 void D2_input(int** a, int n, int m)
 {
 	/*
+	На вход получаем двумерный масиив int** a, и его размерности int n, int m.
+	Функция заполняет его случайными эл-тами от -4 до 16
 	*/
 	for (int i = 0; i < n; i++)
 	{
@@ -541,6 +716,8 @@ void D2_input(int** a, int n, int m)
 void D2_output(int** a, int n, int m)
 {
 	/*
+	На вход получаем двумерный масиив int** a, и его размерности int n, int m.
+	Функция форматировано выводит двумерный массив с пробелмами между эл-тами в 5 символов
 	*/
 	for (int i = 0; i < n; i++)
 	{
@@ -554,6 +731,10 @@ void D2_output(int** a, int n, int m)
 
 void outer_bound(int** a, int n, int m)
 {
+	/*
+	На вход получаем двумерный масиив int** a, и его размерности int n, int m.
+	Функция заполняет "Внешние ободки" массива 2-ками для задания "Игра Жизнь"
+	*/
 	for (int i = 0; i < m; i++)
 	{
 		a[0][i] = 2;
@@ -574,6 +755,10 @@ void outer_bound(int** a, int n, int m)
 
 void input_space(int** a, int n, int m)
 {
+	/*
+	На вход получаем двумерный масиив int** a, и его размерности int n, int m.
+	Функция заполняет массив с "клетками" (без внешних ободков). 0 - живая клетка, 1 - мёртвая.  
+	*/
 	for (int i = 1; i < n - 1; i++)
 	{
 		for (int j = 1; j < m - 1; j++)
@@ -585,6 +770,10 @@ void input_space(int** a, int n, int m)
 
 void space_output(int** a, int n, int m)
 {
+	/*
+	На вход получаем двумерный масиив int** a, и его размерности int n, int m.
+	Функция выводит на экран массив с "клетками" (без внешних ободков). Если клетка жива, то выводится 0, если метрва - Х
+	*/
 	for (int i = 1; i < n - 1; i++)
 	{
 		for (int j = 1; j < m - 1; j++)
@@ -604,6 +793,11 @@ void space_output(int** a, int n, int m)
 
 int scan(int** a, int j, int k)
 {
+	/*
+	На вход получаем двумерный масиив int** a, номер строки int j и номер столбца int k. Тем самым определяем на каком эл-те останаволись программа.
+	Функция "сканирует" все эллементы вокруг текущего и вычисляет количество "живых клеток".
+	Возвращает int live - количество "живых клеток".
+	*/
 	int live = 0;
 	for (int i = k - 1; i <= k + 1; i++)
 	{
@@ -628,10 +822,15 @@ int scan(int** a, int j, int k)
 		live++;
 	}
 	return live;
-}//считатет количество ждивых клеток вокруг
+}//считатет количество живых клеток вокруг
 
 int scan_for_dead(int** a, int n, int m)
 {
+	/*
+	На вход получаем двумерный масиив int** a, и его размерности int n, int m.
+	Функция считает количество "мёртвых клеток" в массиве.
+	Возвращает int dead - количество "мёртвых клеток"
+	*/
 	int dead = 0;
 	for (int i = 1; i < n - 1; i++)
 	{
@@ -649,6 +848,9 @@ int scan_for_dead(int** a, int n, int m)
 void D2_input_for_sportsmen(int** a, int n, int m)
 {
 	/*
+	На вход получаем двумерный масиив int** a, и его размерности int n, int m.
+	Сперва функция проверяет, не находится ли она в первом столбце. Если да, то она записывает  номер спортсмена  в соотвествии с тем, в какой строке он находится + 1(т.к. отсчёт идёт с нулевой строки)
+	Если нет, то функция заполняет остальной массив случайными числами от 0 до 10 - "выстрелами" спортсменов
 	*/
 	for (int i = 0; i < n; i++)
 	{
@@ -669,6 +871,9 @@ void D2_input_for_sportsmen(int** a, int n, int m)
 void D2_output_for_sportsmen(int** a, int n, int m)
 {
 	/*
+	На вход получаем двумерный масиив int** a, и его размерности int n, int m.
+	Сперва функция проверяет, не находится ли она в первом столбце. Если да, то она выводит "Shooter №стрелка и | для создания образа таблицы"
+	если нет, то функция выводит остальной массив с "выстрелами" спортсменов, ставя между ними | для создания таблицы.
 	*/
 	for (int i = 0; i < n; i++)
 	{
@@ -689,6 +894,11 @@ void D2_output_for_sportsmen(int** a, int n, int m)
 
 int D2_max_for_sportsmen(int** a, int n, int m)
 {
+	/*
+	На вход получаем двумерный масиив int** a, и его размерности int n, int m.
+	Функция вычисляет самый точный "выстрел" среди всех спортсменов. 
+	Возвращает int max - максимальное число в таблице спортсменов (не считая номер самих спортсменов)
+	*/
 	int max = 0;
 	for (int i = 0; i < n; i++)
 	{
@@ -705,6 +915,11 @@ int D2_max_for_sportsmen(int** a, int n, int m)
 
 int quantity_of_max_shots(int** a, int b[], int n, int m, int max)
 {
+	/*
+	На вход получаем двумерный масиив int** a, одномерный массив int b[], размерности int** a: int n, int m. И int max
+	Функция считает количество самых точных выстрелов и записывает в масиив int b[] номер спортсмена, еоторый его сделал
+	Возвращает int quant - количество спортсменов с самыми точными выстрелами.
+	*/
 	int k = 0;
 	int quant = 0;
 	for (int i = 0; i < n; i++)
@@ -725,6 +940,11 @@ int quantity_of_max_shots(int** a, int b[], int n, int m, int max)
 
 int array_max(int a[], int n)
 {
+	/*
+	На вход получаем одномерный масиив int a[], и его размерность int n
+	Функция вычисляет максимальный эллемент в массиве
+	Возвращает int max - самый большой эл-т массива
+	*/
 	int max = a[0];
 	for (int i = 1; i < n; i++)
 	{
@@ -738,6 +958,10 @@ int array_max(int a[], int n)
 
 void D2_rand_in_bounds(int** A, int n, int m, int a, int b)
 {
+	/*
+	На вход получаем двумерный масиив int** A, его размерности int n, int m. Левую границу заданной области int a и правую границу int b
+	Функция заполняет двумерный массив int** A в заданном диапозоне [a,b]
+	*/
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
@@ -749,6 +973,11 @@ void D2_rand_in_bounds(int** A, int n, int m, int a, int b)
 
 int scan_for_positive(int** A, int n, int m)
 {
+	/*
+	На вход получаем двумерный масиив int** A, его размерности int n, int m. 
+	Функция сканирует область выше главной диагонали и ниже побочной на наличие положительных эл-тов
+	Возвращает int pos - количество положительных эл-тов в вышеописанной области.
+	*/
 	int pos = 0;
 	for (int i = 0; i < n; i++)
 	{
@@ -769,6 +998,11 @@ int scan_for_positive(int** A, int n, int m)
 
 int scan_for_negative(int** A, int n, int m)
 {
+	/*
+	На вход получаем двумерный масиив int** A, его размерности int n, int m.
+	Функция сканирует область выше главной диагонали и выше побочной на наличие отрицательных эл-тов
+	Возвращает int neg - количество отрицательных эл-тов в вышеописанной области.
+	*/
 	int neg = 0;
 	for (int i = 0; i < n; i++)
 	{
@@ -788,6 +1022,11 @@ int scan_for_negative(int** A, int n, int m)
 
 void max_neg_inGreen(int** A, int n, int m, int& Remi, int& Remj)
 {
+	/*
+	На вход получаем двумерный масиив int** A, его размерности int n, int m и переданные по ссылке int& Remi и int& Remj  - которые запоминают номер эл-та в двумерном массиве.
+	Функция ищет максимальный отрицательный э-т в облвсти выше главной диагонали и выше побочной
+	Передаёт по ссылке номер максимального отрицательно эл-та в двумерном массиве 
+	*/
 	int max_neg = -10000;
 	for (int i = 0; i < n; i++)
 	{
@@ -808,6 +1047,11 @@ void max_neg_inGreen(int** A, int n, int m, int& Remi, int& Remj)
 
 void min_pos_inRed(int** A, int n, int m, int& Remi, int& Remj)
 {
+	/*
+	На вход получаем двумерный масиив int** A, его размерности int n, int m и переданные по ссылке int& Remi и int& Remj  - которые запоминают номер эл-та в двумерном массиве.
+	Функция ищет минимальный положительный э-т в области выше главной диагонали и ниже побочной
+	Передаёт по ссылке номер минимального положительного эл-та в двумерном массиве
+	*/
 	int min_pos = 10000;
 	for (int i = 0; i < n; i++)
 	{
@@ -863,8 +1107,9 @@ void trans_any(int** a, int** b, int n, int m)
 void matrix_sum(int** a, int** b, int** c, int n, int m)
 {
 	/*
-	считаем по правилу: c[i][j] = a[i][j]+b[i][j]
-
+	На вход получаем двумерные массивы int** a, int** b, int** c и их размерности int n, int m
+	В матрицу int** c записывается сумма матриц int** a и int** b
+	Считаем по правилу: c[i][j] = a[i][j]+b[i][j]
 	*/
 	for (int i = 0; i < n; i++)
 	{
@@ -880,9 +1125,9 @@ void matrix_sum(int** a, int** b, int** c, int n, int m)
 void matrix_mult(int** a, int** b, int** c, int n, int m, int k)
 {
 	/*
-
-	считаем по правилу: c[i][j] = a[i][1]*b[1][j]+a[i][2]*b[2][j]+...+a[i][k]*b[k][j]
-
+	На вход получаем двумерные массивы int** a размерностью int n int m на int** b размерностью int m на int k и int** c размерностью int n на int k
+	В матрицу int** c записываем произведение матрицы int** a на матрицу  int** b
+	Считаем по правилу: c[i][j] = a[i][1]*b[1][j]+a[i][2]*b[2][j]+...+a[i][k]*b[k][j]
 	*/
 	for (int i = 0; i < n; i++)
 	{
@@ -900,6 +1145,11 @@ void matrix_mult(int** a, int** b, int** c, int n, int m, int k)
 
 void mult_of_num_and_matrix(int** a, int n, int m, int alpha)
 {
+	/*
+	На вход получаем двумерны1 массивы int** a  размерностью int n на int m и число int alpha
+	В матрицу int** a записываем произведение числа на эту же матрицу 
+	Считаем по правилу a[i][j] = alpha * a[i][j];
+	*/
 	for (int i = 0; i < n; i++)
 	{
 		for (int j = 0; j < m; j++)
@@ -908,3 +1158,79 @@ void mult_of_num_and_matrix(int** a, int n, int m, int alpha)
 		}
 	}
 }//Умножение числа на матрицу
+
+void D2_output_Double(double** a, int n, int m)
+{
+	/*
+	На вход получаем двумерный масиив double** a, и его размерности int n, int m.
+	Функция форматировано выводит двумерный массив c пробелами между эл-тами в 10 символов и 3 наками после запятой
+	*/
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			printf("%10.3f", a[i][j]);
+		}
+		cout << endl;
+	}
+}//Вывод 2D массива (double)
+
+void output(double a[], int n)
+{
+	/*
+	На вход получаем одномерный масиив double a[] и его размерность int n
+	Функция выводит одномерный массив в строчку 
+	*/
+	for (int i = 0; i < n; i++)
+	{
+		cout << a[i] << " ";
+	}
+}//Вывод массива
+
+void Gaus_method(double** a, double* b, double* x, int n)
+{
+	/*
+	На вход получаем матрицу double** a размерностью int n на int n, вектор свободных членов double* b размерностью int n и векор решений double* x разиерностью int n
+	Все формулы указаны в файле с отчётом, т.к. в Visual Studio писать их  неудобно
+
+	*/
+	int i, j, k;
+	double d, s;
+	for (k = 0; k < n; k++)//Прямой ход
+	{
+		for (j = k + 1; j < n; j++)
+		{
+			d = a[j][k] / a[k][k];
+			for (i = k; i < n; i++)
+			{
+				a[j][i] = a[j][i] - d * a[k][i];
+			}
+			b[j] = b[j] - d * b[k];
+		}
+	}
+	for (k = n - 1; k >= 0; k--)//Обратный ход
+	{
+		d = 0;
+		for (j = k + 1; j < n; j++)
+		{
+			s = a[k][j] * x[j];
+			d = d + s;
+		}
+		x[k] = (b[k] - d) / a[k][k];
+	}
+	Gaus_method_output(x, a, n);
+	
+}//Метод Гауса
+
+void Gaus_method_output(double* x, double** a, int n)
+{
+	/*
+	На вход получаем вектор решений double* x размерностью int n и двумерный массив double** a размерностью int n на int n
+	Функция выводит Корни системы double** a
+	*/
+	cout << "System roots: " << endl;
+	for (int i = 0; i < n; i++)
+	{
+		cout << "x[" << i + 1 << "]=" << x[i] << " " << endl;
+	}
+}
