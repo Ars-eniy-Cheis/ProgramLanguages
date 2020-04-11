@@ -1,9 +1,1 @@
-привет
-everybody
-my
-name
-is
-Arseniy
-today
-is
-sunny
+Hello everybody my name is Arseniy! today is sunny.
