@@ -244,11 +244,11 @@ int q_of_words(char** str, int line)
     int quant = 0, j = 0;
     while (str[line][j] != '\0')
     {
-        if (!isalpha(str[line][j]))
+        if (str[line][j] == ' ')
         {
             quant++;
         }
         j++;
     }
-    return quant;
+    return quant+1;
 }
