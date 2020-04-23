@@ -12,6 +12,10 @@ void menu();
 int words_cmp(char* word1, char* word2);
 int str_len(char str[]);
 void D2_output(char** a, int n);
+int shotest_word(char** a, int &row, int &col);
+int str_len(char** str, int num_of_line);
+void bubble_sort(char** a);
+int q_of_words(char** str, int line);
 
 int main()
 {
@@ -56,9 +60,41 @@ int main()
             {
                 text[i] = new char[50];
             }
-
-            cout << text << endl;
-
+            char* short_word = new char[10];
+            for (int i = 0; i < 3; i++)
+            {
+                t_file.getline(text[i], 50);
+                cout << text[i] << endl;
+            }
+            int row, col, length = shotest_word(text, row, col);
+            cout << "length of shorterst word: " << length << endl;
+            cout << "Shortest word: " << endl;
+            int j = col;
+            while ( j > 0 )
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    
+                    if (isalpha(text[row][j - 1]))
+                    {
+                        short_word[i] = text[row][j - 1];
+                    }
+                    else
+                    {
+                        break;
+                    }
+                    j--;
+                } 
+                if (!isalpha(text[row][j - 1]))
+                {
+                    break;
+                }
+            }   
+            for (int i = length-1; i >= 0; i--)
+            {
+                cout << short_word[i];
+            }
+            cout << endl;
             menu();
             break;
         }
@@ -67,6 +103,27 @@ int main()
         {
             //Задание 3
             cout << "Number 3" << endl;
+            ifstream t_file("text.txt");
+            if (!t_file)
+            {
+                cout << "File error" << endl;
+                return 1;
+            }
+            char** text = new char* [3];
+            for (int i = 0; i < 3; i++)
+            {
+                text[i] = new char[50];
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                t_file.getline(text[i], 50);
+                cout << text[i] << endl;
+            }
+            bubble_sort(text);
+            for (int i = 0; i < 3; i++)
+            {
+                cout << text[i] << endl;
+            }
 
             menu();
             break;
@@ -123,3 +180,75 @@ void D2_output(char** a, int n)
         cout << a[i] << endl;
     }
 }//Вывод двумерного массива
+
+int shotest_word(char** a, int& row, int& col)
+{
+    int len = 0, min_len = 50;
+    for (int i = 0; i < 3; i++)
+    {
+        int j = 0;
+        while (a[i][j] != '\0')
+        {
+            if (isalpha(a[i][j]))
+            {
+                len++;
+            }
+            else
+            {
+                if(len <= min_len)
+                {
+                    min_len = len;
+                    row = i;
+                    col = j;
+                }
+                len = 0;
+            }
+            j++;
+        }
+    }
+    return min_len;
+}
+
+int str_len(char** str, int num_of_line)
+{
+    int j = 0;
+        while (str[num_of_line][j] != '\0')
+        {
+            j++;
+        }
+    return j;
+}
+
+void bubble_sort(char** a)
+{
+    for (int i = 0; i < 3; i++) 
+    {
+        bool flag = true;
+        for (int j = 0; j < 3 - (i + 1); j++) 
+        {
+            if (q_of_words(a, j) < q_of_words(a, j+1))
+            {
+                flag = false;
+                swap(a[j], a[j + 1]);
+            }
+        }
+        if (flag) 
+        {
+            break;
+        }
+    }
+}
+
+int q_of_words(char** str, int line)
+{
+    int quant = 0, j = 0;
+    while (str[line][j] != '\0')
+    {
+        if (!isalpha(str[line][j]))
+        {
+            quant++;
+        }
+        j++;
+    }
+    return quant;
+}
