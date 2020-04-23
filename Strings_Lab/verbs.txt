@@ -1,0 +1,16 @@
+do
+make
+relax
+forget
+write
+read
+cut
+see
+heat
+work
+play
+look
+agree
+go
+boil
+chop

@@ -43,29 +43,138 @@ int main()
             //Задание 2
             cout << "Number 2" << endl << "" << endl;
 
-            char* sentence = new char[60];
-            char article[2][4]{ "a", "the" };//артикли
-            char noun[5][11]{"table","home","dinner","room","kitchen"};//существительные
-            char verb[5][11]{ "be","have","eat","do","make" };//глаголы
-            char prepos[5][6]{ "in","on","at","under","with" };//предлоги
+            char** words = new char* [1];
+            for (int i = 0; i < 2; i++)
+            {
+                words[i] = new char[15];
+            }
+            ifstream nc_file("nouns.txt");
+            if (!nc_file)
+            {
+                cout << "File error" << endl;
+                return 1;
+            }
+            int num_of_nouns = 0;
+            while (!nc_file.eof())
+            {
+                int j = 0;
+                nc_file.getline(words[j], 10);
+                j++;
+                num_of_nouns++;
+            }
+            ifstream vc_file("verbs.txt");
+            if (!vc_file)
+            {
+                cout << "File error" << endl;
+                return 1;
+            }
+            int num_of_verbs = 0;
+            while (!vc_file.eof())
+            {
+                int j = 0;
+                vc_file.getline(words[j], 10);
+                j++;
+                num_of_verbs++;
+            }
+            ifstream pc_file("preposes.txt");
+            if (!pc_file)
+            {
+                cout << "File error" << endl;
+                return 1;
+            }
+            int num_of_preposes = 0;
+            while (!pc_file.eof())
+            {
+                int j = 0;
+                pc_file.getline(words[j], 10);
+                j++;
+                num_of_preposes++;
+            } 
+            cout << "Number of nouns:"<< num_of_nouns << endl;
+            cout << "Number of verbs:" << num_of_verbs  <<endl;
+            cout << "Number of prepositions:" << num_of_preposes <<endl;
 
-            for (int i = 0; i < 60; i++)
+            char** article = new char* [2];
+            for (int i = 0; i < 2; i++)
+            {
+                article[i] = new char[4];
+            }
+            char** noun = new char* [num_of_nouns];
+            for (int i = 0; i < num_of_nouns; i++)
+            {
+                noun[i] = new char[10];
+            }
+            char** verb = new char* [num_of_verbs];
+            for (int i = 0; i < num_of_verbs; i++)
+            {
+                verb[i] = new char[10];
+            }
+            char** prepos = new char* [num_of_preposes];
+            for (int i = 0; i < num_of_preposes; i++)
+            {
+                prepos[i] = new char[10];
+            }
+            char* sentence  = new char[256];
+            for (int i = 0; i < 256; i++)
             {
                 sentence[i] = NULL;
             }
-            sentence[59] = '\0';
+
+            ifstream a_file("articles.txt");
+            if (!a_file)
+            {
+                cout << "File error" << endl;
+                return 1;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                a_file.getline(article[i], 4);
+            }
+
+            ifstream n_file("nouns.txt");
+            if (!n_file)
+            {
+                cout << "File error" << endl;
+                return 1;
+            }
+            for (int i = 0; i < num_of_nouns; i++)
+            {
+                n_file.getline(noun[i], 10);
+            }
+
+            ifstream v_file("verbs.txt");
+            if (!v_file)
+            {
+                cout << "File error" << endl;
+                return 1;
+            }
+            for (int i = 0; i < num_of_verbs; i++)
+            {
+                v_file.getline(verb[i], 10);
+            }
+
+            ifstream p_file("preposes.txt");
+            if (!p_file)
+            {
+                cout << "File error" << endl;
+                return 1;
+            }
+            for (int i = 0; i < num_of_preposes; i++)
+            {
+                p_file.getline(prepos[i], 10);
+            }
 
             strcat(sentence, article[rand() %2]);
             strcat(sentence, " ");
-            strcat(sentence, noun[rand() % 5]);
+            strcat(sentence, noun[rand() % num_of_nouns]);
             strcat(sentence, " ");
-            strcat(sentence, verb[rand() % 5]);
+            strcat(sentence, verb[rand() % num_of_verbs]);
             strcat(sentence, " ");
-            strcat(sentence, prepos[rand() % 5]);
+            strcat(sentence, prepos[rand() % num_of_preposes]);
             strcat(sentence, " ");
             strcat(sentence, article[rand() % 2]);
             strcat(sentence, " ");
-            strcat(sentence, noun[rand() % 5]);
+            strcat(sentence, noun[rand() % num_of_nouns]);
             strcat(sentence, ".");
             if (sentence[0] == 't')
             {

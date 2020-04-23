@@ -1,0 +1,17 @@
+sofa
+kitchen
+table
+pan
+garden
+fire
+dinner
+lunch
+fridge
+window
+computer
+desk
+pen
+pencil
+book
+chair
+menu
