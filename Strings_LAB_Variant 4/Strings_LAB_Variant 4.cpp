@@ -40,7 +40,7 @@ int main()
             cin.clear();
             cin.ignore();
             cin.getline(word2, 256);
-            cout<<words_cmp(word1, word2)<<endl;
+            cout << words_cmp(word1, word2) << endl;
             menu();
             break;
         }
@@ -142,7 +142,7 @@ int main()
 void menu()
 {
     cout << "MENU" << endl << endl << "1. Strings Compare" << endl << "2. Shoterst word" << endl << "3. Decrease row of words" << endl;
-}
+}//Меню
 
 int words_cmp(char* word1, char* word2)
 {
@@ -159,7 +159,7 @@ int words_cmp(char* word1, char* word2)
     {
         return 0;
     }
-}
+}//Посимвольное равнение слов
 
 int str_len(char str[])
 {
@@ -169,7 +169,7 @@ int str_len(char str[])
 
     }
     return i;
-}
+}//Вычисление длины строки
 
 void D2_output(char** a, int n)
 {
@@ -179,7 +179,7 @@ void D2_output(char** a, int n)
     {
         cout << a[i] << endl;
     }
-}//Вывод двумерного массива
+}//Вывод двумерного массива типа char
 
 int shotest_word(char** a, int& row, int& col)
 {
@@ -207,7 +207,7 @@ int shotest_word(char** a, int& row, int& col)
         }
     }
     return min_len;
-}
+}//Поиск самого короткого слова в 2D масииве
 
 int str_len(char** str, int num_of_line)
 {
@@ -217,7 +217,7 @@ int str_len(char** str, int num_of_line)
             j++;
         }
     return j;
-}
+}//Вычисление длины строки в 2D массиве
 
 void bubble_sort(char** a)
 {
@@ -237,7 +237,7 @@ void bubble_sort(char** a)
             break;
         }
     }
-}
+}//Пузырьковая сортировка
 
 int q_of_words(char** str, int line)
 {
@@ -251,4 +251,4 @@ int q_of_words(char** str, int line)
         j++;
     }
     return quant+1;
-}
+}//Подсчёт количества слов в 2D массиве
