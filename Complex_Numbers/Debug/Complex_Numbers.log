@@ -1,0 +1,5 @@
+﻿  Complex_Numbers.cpp
+D:\Languages\ProgramLanguages\Complex_Numbers\Complex_Numbers.cpp(92,15): error C2039: set: не является членом "complex"
+D:\Languages\ProgramLanguages\Complex_Numbers\Complex_Numbers.cpp(8): message : см. объявление "complex"
+D:\Languages\ProgramLanguages\Complex_Numbers\Complex_Numbers.cpp(94,5): error C2065: re: необъявленный идентификатор
+D:\Languages\ProgramLanguages\Complex_Numbers\Complex_Numbers.cpp(95,5): error C2065: im: необъявленный идентификатор

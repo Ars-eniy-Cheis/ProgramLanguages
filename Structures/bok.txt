@@ -1,0 +1,44 @@
+1121
+Ray D. Bradbury
+Martian Chronicles
+400
+2345
+Gabriel Garcia Marquez
+One hundred years of solitude
+600
+2345
+Vladimir Nabokov
+Bend Sinister
+300
+1121
+Stanislav Lem
+Solaris
+500
+5549
+Vladimir Nabokov
+Pnin
+400
+5549
+Carl Sagan
+Contact
+1100
+9922
+Daniel Keyes
+Flowers for Algernon
+1200
+5549
+Ray D. Bradbury
+451 degrees Fahrenheit
+300
+6667
+Aldous Huxley
+Brave New World
+1200
+6667
+George Orwell
+1984
+1900
+1121
+Vladimir Nabokov
+Lolita
+1200
