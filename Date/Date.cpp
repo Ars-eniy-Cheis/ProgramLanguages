@@ -3,26 +3,95 @@
 #include <iostream>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
+#include <cmath>
+#include <math.h>
 
 using namespace std;
 
 struct Date
 {
-	unsigned int day, year, month;
+	int day, year, month;
 	int* MONTH = new int[12];
 	bool leap; //Високосный или нет
 };
 
 void menu();
 void day_output(Date d);
+Date day_input(Date day_of_calen);
 bool is_leap(Date d);
 Date add_day(Date d, int D);
 Date add_month(Date d, int M);
 Date add_year(Date d, int Y);
+Date subtract_day(Date d, int D);
+Date subtract_month(Date d, int M);
+Date subtract_year(Date d, int Y);
 
 int main()
 {
 	Date day_of_calen;
+	day_of_calen = day_input(day_of_calen);
+	menu();
+	int num = 1;
+	while (num != 0)
+	{
+		cin >> num;
+		switch (num)
+		{
+		case 1:
+		{
+			int d, m, y; //День, месяц, год
+			cout << "How many days do you want to add?" << endl;
+			cin >> d;
+			cout << "How many months do you want to add?" << endl;
+			cin >> m;
+			cout << "How many years do you want to add?" << endl;
+			cin >> y;
+			day_output(day_of_calen);
+			day_of_calen = add_year(day_of_calen, y);
+			day_of_calen = add_month(day_of_calen, m);
+			day_of_calen = add_day(day_of_calen, d);
+			day_output(day_of_calen);
+			menu();
+			break;
+		}
+		case 2:
+		{
+			int d, m, y; //День, месяц, год
+			cout << "How many days do you want to subtract?" << endl;
+			cin >> d;
+			cout << "How many months do you want to subtract?" << endl;
+			cin >> m;
+			cout << "How many years do you want to subtract?" << endl;
+			cin >> y;
+			day_output(day_of_calen);
+			day_of_calen = subtract_year(day_of_calen, y);
+			day_of_calen = subtract_month(day_of_calen, m);
+			day_of_calen = subtract_day(day_of_calen, d);
+			day_output(day_of_calen);
+			menu();
+			break;
+		}
+		case 0:
+		{
+			return 0;
+		}
+		}
+	}
+}
+
+void menu()
+{
+	cout << "1. Add" << endl << "2. Subtract" << endl << "0. Exit" << endl;
+}
+
+void day_output(Date d)
+{
+	cout << d.day << " day " << d.month << " month " << d.year << " year " << endl;
+}
+
+Date day_input(Date day_of_calen)
+{
 	cout << "Enter year" << endl;
 	cin >> day_of_calen.year;
 	day_of_calen.leap = is_leap(day_of_calen);
@@ -38,7 +107,7 @@ int main()
 	}
 	cout << "Enter day" << endl;
 	cin >> day_of_calen.day;
-	if ((day_of_calen.month == 1 || day_of_calen.month == 3 || day_of_calen.month == 5 || day_of_calen.month ==  7 || day_of_calen.month == 8 || day_of_calen.month ==  10 || day_of_calen.month == 12) && (day_of_calen.day>31))
+	if ((day_of_calen.month == 1 || day_of_calen.month == 3 || day_of_calen.month == 5 || day_of_calen.month == 7 || day_of_calen.month == 8 || day_of_calen.month == 10 || day_of_calen.month == 12) && (day_of_calen.day > 31))
 	{
 		do
 		{
@@ -82,60 +151,7 @@ int main()
 	day_of_calen.MONTH[9] = 31;
 	day_of_calen.MONTH[10] = 30;
 	day_of_calen.MONTH[11] = 31;
-
-	menu();
-	int num = 1;
-	while (num != 0)
-	{
-		cin >> num;
-		switch (num)
-		{
-		case 1:
-		{
-			int d, m, y; //День, месяц, год
-			cout << "How many days do you want to add?" << endl;
-			cin >> d;
-			cout << "How many months do you want to add?" << endl;
-			cin >> m;
-			cout << "How many years do you want to add?" << endl;
-			cin >> y;
-			day_output(day_of_calen);
-			day_of_calen = add_year(day_of_calen, y);
-			day_of_calen = add_month(day_of_calen, m);
-			day_of_calen = add_day(day_of_calen, d);
-			day_output(day_of_calen);
-			menu();
-			break;
-		}
-		case 2:
-		{
-			int d, m, y; //День, месяц, год
-			cout << "How many days do you want to subtract?" << endl;
-			cin >> d;
-			cout << "How many months do you want to subtract?" << endl;
-			cin >> m;
-			cout << "How many years do you want to subtract?" << endl;
-			cin >> y;
-
-			menu();
-			break;
-		}
-		case 0:
-		{
-			return 0;
-		}
-		}
-	}
-}
-
-void menu()
-{
-	cout << "1. Add" << endl << "2. Subtract" << endl << "0. Exit" << endl;
-}
-
-void day_output(Date d)
-{
-	cout << d.day << " day " << d.month << " month " << d.year << " year " << endl;
+	return day_of_calen;
 }
 
 bool is_leap(Date d)
@@ -164,13 +180,13 @@ Date add_day(Date d, int D)
 		if (d.day > d.MONTH[d.month-1])
 		{
 			d.month++;
+			if (d.month > 12)
+			{
+				d.year++;
+				d.month = 1;
+				d.leap = is_leap(d);
+			}
 			d.day = 1;
-		}
-		if (d.month > 12)
-		{
-			d.year++;
-			d.month = 1;
-			d.leap = is_leap(d);
 		}
 	}
 	return d;
@@ -201,6 +217,68 @@ Date add_year(Date d, int Y)
 		return d;
 	}
 	d.year = d.year + Y;
+	d.leap = is_leap(d);
+	if (d.day > d.MONTH[d.month - 1])
+	{
+		d.day = d.MONTH[d.month - 1];
+	}
+	return d;
+}
+
+Date subtract_day(Date d, int D)
+{
+	if (D == 0)
+	{
+		return d;
+	}
+	d.leap = is_leap(d);
+	D = abs(D);
+	for (int i = D; i > 0; i--)
+	{
+		d.day--;
+		if (d.day < 1)
+		{
+			d.month--;
+			if (d.month < 1)
+			{
+				d.year--;
+				d.month = 12;
+				d.leap = is_leap(d);
+			}
+			d.day = d.MONTH[d.month - 1];
+		}
+	}
+
+	return d;
+}
+
+Date subtract_month(Date d, int M)
+{
+	if (M == 0)
+	{
+		return d;
+	}
+	M = abs(M);
+	int month_rem;
+	month_rem = d.month - 12;
+	d.month = 12 - abs((d.month - M) % 12);
+	d.year = d.year  - abs((month_rem - M) / 12);
+	d.leap = is_leap(d);
+	if (d.day > d.MONTH[d.month - 1])
+	{
+		d.day = d.MONTH[d.month - 1];
+	}
+	return d;
+}
+
+Date subtract_year(Date d, int Y)
+{
+	if (Y == 0)
+	{
+		return d;
+	}
+	Y = abs(Y);
+	d.year = d.year - Y;
 	d.leap = is_leap(d);
 	if (d.day > d.MONTH[d.month - 1])
 	{
