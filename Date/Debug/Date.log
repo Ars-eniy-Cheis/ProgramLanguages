@@ -1,0 +1,5 @@
+﻿  Date.cpp
+D:\Languages\ProgramLanguages\Date\Date.cpp(164,13): warning C4018: >: несоответствие типов со знаком и без знака
+D:\Languages\ProgramLanguages\Date\Date.cpp(190,12): warning C4018: >: несоответствие типов со знаком и без знака
+D:\Languages\ProgramLanguages\Date\Date.cpp(205,12): warning C4018: >: несоответствие типов со знаком и без знака
+  Date.vcxproj -> D:\Languages\ProgramLanguages\Date\Debug\Date.exe
