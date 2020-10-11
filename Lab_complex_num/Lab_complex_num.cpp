@@ -1,13 +1,10 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
-
 #include <iostream>
 #include <stdlib.h>
 #include <cmath>
 #include <math.h>
 
 using namespace std;
-
-void menu();
 
 class complex
 {
@@ -23,16 +20,18 @@ public:
 
     complex operator+ (const complex& a);
     complex operator* (const complex& a);
-    friend bool operator== (complex& left, complex& right);
-    friend bool operator!= (complex& left, complex& right);
-    friend bool operator> (complex& left, complex& right);
-    friend bool operator< (complex& left, complex& right);
-    friend bool operator<= (complex& left, complex& right);
-    friend bool operator>= (complex& left, complex& right);
+    bool operator== (complex& a);
+    bool operator!= (complex& a);
+    bool operator> (complex& a);
+    bool operator< (complex& a);
+    bool operator<= (complex& a);
+    bool operator>= (complex& a);
 
     friend ostream& operator<< (ostream& out, const complex& c);
     friend istream& operator>> (istream& in, complex& c);
 };
+
+void menu();
 
 int main()
 {
@@ -48,27 +47,52 @@ int main()
         case 1:
         {
             complex c1, c2, sum, mult;
-            float re, im;
-            cout << "Enter c1:" << endl << "re = "; // 1)2-8i 2) 2i 3)11+9i 4)4 5)2-i
-            cin >> re;
-            cout << "im = ";
-            cin >> im;
-            c1.input(re, im);
-            cout << "Enter c2:" << endl << "re = "; //1)5+10i 2) 6i 3) 20i 4)20 5)-2+i
-            cin >> re;
-            cout << "im = ";
-            cin >> im;
-            c2.input(re, im);
-            cout << "c1 = ";
-            c1.output();
-            cout << endl << "c2 = ";
-            c2.output();
+            cout << "Enter c1:" << endl; // 1)2-8i 2) 2i 3)11+9i 4)4 5)2-i
+            cin >> c1;
+            cout << "Enter c2:" << endl; //1)5+10i 2) 6i 3) 20i 4)20 5)-2+i
+            cin >> c2;
+            cout << "c1 = " << c1;
+            cout << endl << "c2 = " << c2;
             sum = c1 + c2; // 1) 7+2i 2) +8i 3) 11+29i 4)24 5)0
-            cout << endl << "c1 + c2 = ";
-            sum.output();
+            cout << endl << "c1 + c2 = " << sum;
             mult = c1 * c2; // 1) 90-20i 2) -12 3-180+220i) 4)80 5) -3+4i
-            cout << endl << "c1 * c2 = ";
-            mult.output();
+            cout << endl << "c1 * c2 = " << mult << endl;
+            menu();
+            break;
+        }
+        case 2:
+        {
+            complex c1, c2;
+            cout << "Enter c1:" << endl;
+            cin >> c1;// 1)4+3i 2)4+3i
+            cout << "Enter c2:" << endl;
+            cin >> c2;//1)5 2) 5+i
+            //Ответ: 1)c1>=c2 c1<=c2 c1==c2; 2)c1<=c2 c1<c2 c1 != c2
+            if (c1 >= c2)
+            {
+                cout << "c1 >= c2" << endl;
+            }
+            if (c1 <= c2)
+            {
+                cout << "c1 <= c2" << endl;
+            }
+            if (c1 > c2)
+            {
+                cout << "c1 > c2" << endl;
+            }
+            if (c1 < c2)
+            {
+                cout << "c1 < c2" << endl;
+            }
+            
+            if (c1 == c2)
+            {
+                cout << "c1 == c2" << endl;
+            }
+            if (c1 != c2)
+            {
+                cout << "c1 != c2" << endl;
+            }
             menu();
             break;
         }
@@ -82,7 +106,7 @@ int main()
 
 void menu()
 {
-    cout << endl << "MENU" << endl << endl << "1. Plus and mult complex numbers" << endl << "0. EXIT" << endl;
+    cout << endl << "MENU" << endl << endl << "1. Plus and mult complex numbers" << endl << "2. Comparison" << endl << "0. EXIT" << endl;
 }
 
 complex::complex(float input_re, float input_im)
@@ -160,34 +184,46 @@ complex complex::operator* (const complex& a)
     return temp;
 }
 
-bool operator== (complex& left, complex& right)
+bool complex::operator== (complex& a)
 {
-    return left.module() == right.module();
+    if (this->module() == a.module())
+        return 1;
+    else return 0;
 }
 
-bool operator!= (complex& left, complex& right)
+bool complex::operator!= (complex& a)
 {
-    return left.module() != right.module();
+    if (this->module() != a.module())
+        return 1;
+    else return 0;
 }
 
-bool operator> (complex& left, complex& right)
+bool complex::operator> (complex& a)
 {
-    return left.module() > right.module();
+    if (this->module() > a.module())
+        return 1;
+    else return 0;
 }
 
-bool operator< (complex& left, complex& right)
+bool complex::operator< (complex& a)
 {
-    return left.module() < right.module();
+    if (this->module() < a.module())
+        return 1;
+    else return 0;
 }
 
-bool operator<= (complex& left, complex& right)
+bool complex::operator<= (complex& a)
 {
-    return left.module() <= right.module();
+    if (this->module() <= a.module())
+        return 1;
+    else return 0;
 }
 
-bool operator>= (complex& left, complex& right)
+bool complex::operator>= (complex& a)
 {
-    return left.module() >= right.module();
+    if (this->module() >= a.module())
+        return 1;
+    else return 0;
 }
 
 ostream& operator<< (ostream& out, const complex& c)
@@ -229,7 +265,7 @@ ostream& operator<< (ostream& out, const complex& c)
 
 istream& operator>> (istream& in, complex& c)
 {
-    in >> c.re >> c.im;
+    in >> c.re;
     in >> c.im;
     return in;
 }
