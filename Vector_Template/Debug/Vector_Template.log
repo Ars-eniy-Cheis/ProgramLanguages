@@ -1,0 +1,38 @@
+﻿  Vector_Template.cpp
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(291,16): warning C4244: return: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=int
+          ]
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(285): message : во время компиляции функции-члена класс шаблон "T Vector<T>::abs(Vector<T> &)"
+          with
+          [
+              T=int
+          ]
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(273): message : выполняется компиляция ссылки на экземпляр шаблон функции "T Vector<T>::abs(Vector<T> &)"
+          with
+          [
+              T=int
+          ]
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(218): message : во время компиляции функции-члена класс шаблон "Vector<int>::Vector(void)"
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(135): message : выполняется компиляция ссылки на экземпляр шаблон функции "Vector<int>::Vector(void)"
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(135): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "Vector<int>"
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(291,16): warning C4244: return: преобразование "double" в "T", возможна потеря данных
+          with
+          [
+              T=unsigned int
+          ]
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(285): message : во время компиляции функции-члена класс шаблон "T Vector<T>::abs(Vector<T> &)"
+          with
+          [
+              T=unsigned int
+          ]
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(416): message : выполняется компиляция ссылки на экземпляр шаблон функции "T Vector<T>::abs(Vector<T> &)"
+          with
+          [
+              T=unsigned int
+          ]
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(218): message : во время компиляции функции-члена класс шаблон "Vector<unsigned int>::Vector(void)"
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(173): message : выполняется компиляция ссылки на экземпляр шаблон функции "Vector<unsigned int>::Vector(void)"
+D:\Languages\ProgramLanguages\Vector_Template\Vector_Template.cpp(173): message : выполняется компиляция ссылки на экземпляр класс шаблон функции "Vector<unsigned int>"
+  Vector_Template.vcxproj -> D:\Languages\ProgramLanguages\Vector_Template\Debug\Vector_Template.exe

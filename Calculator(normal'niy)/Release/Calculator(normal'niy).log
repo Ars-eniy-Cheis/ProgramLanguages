@@ -1,0 +1,11 @@
+﻿  Calculator(normal'niy).cpp
+D:\Languages\ProgramLanguages\Calculator(normal'niy)\Calculator(normal'niy).cpp(38,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Languages\ProgramLanguages\Calculator(normal'niy)\Calculator(normal'niy).cpp(83,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Languages\ProgramLanguages\Calculator(normal'niy)\Calculator(normal'niy).cpp(152,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Languages\ProgramLanguages\Calculator(normal'niy)\Calculator(normal'niy).cpp(180,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода
+  2 of 268 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  Calculator(normal'niy).vcxproj -> D:\Languages\ProgramLanguages\Calculator(normal'niy)\Release\Calculator(normal'niy).exe

@@ -1,0 +1,2 @@
+D:\Languages\ProgramLanguages\CalculatorOOP\Debug\CalculatorOOP.exe
+D:\Languages\ProgramLanguages\CalculatorOOP\Debug\CalculatorOOP.pdb

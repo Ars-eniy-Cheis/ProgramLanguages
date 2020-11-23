@@ -1,0 +1,2 @@
+D:\Languages\ProgramLanguages\Tester\Debug\Tester.exe
+D:\Languages\ProgramLanguages\Tester\Debug\Tester.pdb

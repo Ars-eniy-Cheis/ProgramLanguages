@@ -1,0 +1,2 @@
+D:\Languages\ProgramLanguages\Inheritance\Debug\Inheritance.exe
+D:\Languages\ProgramLanguages\Inheritance\Debug\Inheritance.pdb

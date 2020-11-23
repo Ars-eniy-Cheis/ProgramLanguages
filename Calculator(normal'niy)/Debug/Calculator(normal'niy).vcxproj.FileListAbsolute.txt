@@ -1,0 +1,2 @@
+D:\Languages\ProgramLanguages\Calculator(normal'niy)\Debug\Calculator(normal'niy).exe
+D:\Languages\ProgramLanguages\Calculator(normal'niy)\Debug\Calculator(normal'niy).pdb

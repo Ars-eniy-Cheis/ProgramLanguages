@@ -1,0 +1,29 @@
+﻿  App.cpp
+D:\Languages\ProgramLanguages\Calculator\Parser.h(7,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "<"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(7,7): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\Languages\ProgramLanguages\Calculator\Parser.h(7,16): error C2238: непредвиденные лексемы перед ";"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(11,8): error C2061: синтаксическая ошибка: идентификатор "stack"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(11,8): error C2535: Parser::Parser(void): функция-член уже определена или объявлена
+D:\Languages\ProgramLanguages\Calculator\Parser.h(10): message : см. объявление "Parser::Parser"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(13,33): error C2061: синтаксическая ошибка: идентификатор "string"
+D:\Languages\ProgramLanguages\Calculator\App.cpp(25,32): error C2660: Parser::PostFix_Conversion: функция не принимает 1 аргументов
+D:\Languages\ProgramLanguages\Calculator\Parser.h(13,7): message : см. объявление "Parser::PostFix_Conversion"
+  Parser.cpp
+D:\Languages\ProgramLanguages\Calculator\Parser.h(7,7): error C2143: синтаксическая ошибка: отсутствие ";" перед "<"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(7,7): error C4430: отсутствует спецификатор типа - предполагается int. Примечание. C++ не поддерживает int по умолчанию
+D:\Languages\ProgramLanguages\Calculator\Parser.h(7,16): error C2238: непредвиденные лексемы перед ";"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(11,8): error C2061: синтаксическая ошибка: идентификатор "stack"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(11,8): error C2535: Parser::Parser(void): функция-член уже определена или объявлена
+D:\Languages\ProgramLanguages\Calculator\Parser.h(10): message : см. объявление "Parser::Parser"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(13,33): error C2061: синтаксическая ошибка: идентификатор "string"
+D:\Languages\ProgramLanguages\Calculator\Parser.cpp(18,2): error C2065: St: необъявленный идентификатор
+D:\Languages\ProgramLanguages\Calculator\Parser.cpp(22,1): error C2511: Parser::Parser(std::stack<char,std::deque<char,std::allocator<char>>>): перегруженная функция-член не найдена в "Parser"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(4): message : см. объявление "Parser"
+D:\Languages\ProgramLanguages\Calculator\Parser.cpp(23,2): error C2065: St: необъявленный идентификатор
+D:\Languages\ProgramLanguages\Calculator\Parser.cpp(28,2): error C2065: St: необъявленный идентификатор
+D:\Languages\ProgramLanguages\Calculator\Parser.cpp(28,12): error C2039: "St": не является членом "Parser".
+D:\Languages\ProgramLanguages\Calculator\Parser.h(4): message : см. объявление "Parser"
+D:\Languages\ProgramLanguages\Calculator\Parser.cpp(32,1): error C2511: void Parser::PostFix_Conversion(std::string): перегруженная функция-член не найдена в "Parser"
+D:\Languages\ProgramLanguages\Calculator\Parser.h(4): message : см. объявление "Parser"
+D:\Languages\ProgramLanguages\Calculator\Parser.cpp(33,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...

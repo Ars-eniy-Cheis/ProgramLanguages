@@ -1,0 +1,4 @@
+﻿  Calculator(normal'niy).cpp
+D:\Languages\ProgramLanguages\Calculator(normal'niy)\Calculator(normal'niy).cpp(29,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Languages\ProgramLanguages\Calculator(normal'niy)\Calculator(normal'niy).cpp(73,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Calculator(normal'niy).vcxproj -> D:\Languages\ProgramLanguages\Calculator(normal'niy)\Debug\Calculator(normal'niy).exe

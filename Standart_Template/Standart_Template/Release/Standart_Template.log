@@ -1,0 +1,8 @@
+﻿  Standart_Template.cpp
+D:\Languages\ProgramLanguages\Standart_Template\Standart_Template\Standart_Template.cpp(145,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Languages\ProgramLanguages\Standart_Template\Standart_Template\Standart_Template.cpp(154,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода
+  Previous IPDB not found, fall back to full compilation.
+  All 344 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Создание кода завершено
+  Standart_Template.vcxproj -> D:\Languages\ProgramLanguages\Standart_Template\Release\Standart_Template.exe

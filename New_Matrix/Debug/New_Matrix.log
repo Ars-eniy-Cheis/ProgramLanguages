@@ -1,0 +1,3 @@
+﻿  New_Matrix.cpp
+D:\Languages\ProgramLanguages\New_Matrix\New_Matrix.cpp(371,44): warning C4244: +=: преобразование "float" в "int", возможна потеря данных
+  New_Matrix.vcxproj -> D:\Languages\ProgramLanguages\New_Matrix\Debug\New_Matrix.exe

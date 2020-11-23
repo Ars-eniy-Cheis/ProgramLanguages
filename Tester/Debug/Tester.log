@@ -1,0 +1,4 @@
+﻿  Tester.cpp
+D:\Languages\ProgramLanguages\Tester\Tester.cpp(13,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Languages\ProgramLanguages\Tester\Tester.cpp(15,17): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  Tester.vcxproj -> D:\Languages\ProgramLanguages\Tester\Debug\Tester.exe

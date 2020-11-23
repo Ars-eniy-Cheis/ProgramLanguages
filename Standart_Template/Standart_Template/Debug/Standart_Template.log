@@ -1,0 +1,4 @@
+﻿  Standart_Template.cpp
+D:\Languages\ProgramLanguages\Standart_Template\Standart_Template\Standart_Template.cpp(146,20): warning C4018: <: несоответствие типов со знаком и без знака
+D:\Languages\ProgramLanguages\Standart_Template\Standart_Template\Standart_Template.cpp(155,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Standart_Template.vcxproj -> D:\Languages\ProgramLanguages\Standart_Template\Debug\Standart_Template.exe

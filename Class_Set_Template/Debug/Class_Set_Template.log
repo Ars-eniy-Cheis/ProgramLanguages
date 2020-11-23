@@ -1,0 +1,10 @@
+﻿  Class_Set_Template.cpp
+D:\Languages\ProgramLanguages\Class_Set_Template\Class_Set_Template.cpp(243,1): error C2563: несоответствие в списке формальных параметров
+D:\Languages\ProgramLanguages\Class_Set_Template\Class_Set_Template.cpp(243,1): error C2568: <: не удается разрешить перегрузку функции
+D:\Languages\ProgramLanguages\Class_Set_Template\Class_Set_Template.cpp(243,1): message : может быть "size_t std::size(const _Ty (&)[_Size]) noexcept"
+D:\Languages\ProgramLanguages\Class_Set_Template\Class_Set_Template.cpp(243,1): message : или       "unknown-type std::size(const _Container &)"
+D:\Languages\ProgramLanguages\Class_Set_Template\Class_Set_Template.cpp(255,1): error C2563: несоответствие в списке формальных параметров
+D:\Languages\ProgramLanguages\Class_Set_Template\Class_Set_Template.cpp(255,1): error C2568: <: не удается разрешить перегрузку функции
+D:\Languages\ProgramLanguages\Class_Set_Template\Class_Set_Template.cpp(255,1): message : может быть "size_t std::size(const _Ty (&)[_Size]) noexcept"
+D:\Languages\ProgramLanguages\Class_Set_Template\Class_Set_Template.cpp(255,1): message : или       "unknown-type std::size(const _Container &)"
+D:\Languages\ProgramLanguages\Class_Set_Template\Class_Set_Template.cpp(250,16): error C3861: set: идентификатор не найден
