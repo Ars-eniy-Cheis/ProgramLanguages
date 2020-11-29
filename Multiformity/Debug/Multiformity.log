@@ -1,0 +1,4 @@
+﻿  Visual_Part.cpp
+D:\Languages\ProgramLanguages\Multiformity\Visual_Part.cpp(73,25): warning C4244: return: преобразование "float" в "int", возможна потеря данных
+D:\Languages\ProgramLanguages\Multiformity\Visual_Part.cpp(61): warning C4715: Visual_Part::Run: значение возвращается не при всех путях выполнения
+  Multiformity.vcxproj -> D:\Languages\ProgramLanguages\Multiformity\Debug\Multiformity.exe
