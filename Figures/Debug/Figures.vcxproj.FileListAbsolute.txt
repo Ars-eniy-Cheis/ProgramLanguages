@@ -1,0 +1,2 @@
+D:\Languages\ProgramLanguages\Figures\Debug\Figures.exe
+D:\Languages\ProgramLanguages\Figures\Debug\Figures.pdb

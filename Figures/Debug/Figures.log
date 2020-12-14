@@ -1,0 +1,3 @@
+﻿  Visual_Part.cpp
+D:\Languages\ProgramLanguages\Figures\Visual_Part.cpp(176): warning C4715: Visual_Part::Run: значение возвращается не при всех путях выполнения
+  Figures.vcxproj -> D:\Languages\ProgramLanguages\Figures\Debug\Figures.exe
