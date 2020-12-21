@@ -1,0 +1,15 @@
+﻿  Cylinder.cpp
+D:\Languages\ProgramLanguages\Miltiformity_2\Cylinder.h(13,10): warning C4290: спецификация исключений C++ игнорируется, кроме случая, когда указывается, что функция не является __declspec(nothrow)
+D:\Languages\ProgramLanguages\Miltiformity_2\Cylinder.cpp(10,61): warning C4290: спецификация исключений C++ игнорируется, кроме случая, когда указывается, что функция не является __declspec(nothrow)
+D:\Languages\ProgramLanguages\Miltiformity_2\Cylinder.cpp(14,25): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  Visual_Part.cpp
+D:\Languages\ProgramLanguages\Miltiformity_2\Circle.h(16,8): warning C4290: спецификация исключений C++ игнорируется, кроме случая, когда указывается, что функция не является __declspec(nothrow)
+D:\Languages\ProgramLanguages\Miltiformity_2\Rectangle.h(12,11): warning C4290: спецификация исключений C++ игнорируется, кроме случая, когда указывается, что функция не является __declspec(nothrow)
+D:\Languages\ProgramLanguages\Miltiformity_2\Rectangle.h(13,11): warning C4290: спецификация исключений C++ игнорируется, кроме случая, когда указывается, что функция не является __declspec(nothrow)
+D:\Languages\ProgramLanguages\Miltiformity_2\Parallelogram.h(12,15): warning C4290: спецификация исключений C++ игнорируется, кроме случая, когда указывается, что функция не является __declspec(nothrow)
+D:\Languages\ProgramLanguages\Miltiformity_2\Trapezium.h(15,11): warning C4290: спецификация исключений C++ игнорируется, кроме случая, когда указывается, что функция не является __declspec(nothrow)
+D:\Languages\ProgramLanguages\Miltiformity_2\Triangle.h(15,10): warning C4290: спецификация исключений C++ игнорируется, кроме случая, когда указывается, что функция не является __declspec(nothrow)
+D:\Languages\ProgramLanguages\Miltiformity_2\Cylinder.h(13,10): warning C4290: спецификация исключений C++ игнорируется, кроме случая, когда указывается, что функция не является __declspec(nothrow)
+  Создание кода...
+D:\Languages\ProgramLanguages\Miltiformity_2\Visual_Part.cpp(380): warning C4715: Visual_Part::Run: значение возвращается не при всех путях выполнения
+  Miltiformity_2.vcxproj -> D:\Languages\ProgramLanguages\Miltiformity_2\Debug\Miltiformity_2.exe
